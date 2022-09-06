@@ -62,31 +62,37 @@ const Login = () => {
         try {
           const response = await getUserToken({ withCredentials: true });
           localStorage.removeItem("authProvider");
-          console.log("User Token", response);
+          console.log("Google Auth Response", response);
           storeUser(response.data);
           setError("");
           navigate("/");
         } catch (error) {
+          console.log("Google Auth Error", error);
           console.log(error);
         }
       } else if (authProviderType === "facebook") {
         try {
           const response = await getUserToken({ withCredentials: true });
           localStorage.removeItem("authProvider");
+          console.log("Facebook Auth Response", response);
           storeUser(response.data);
           setError("");
           navigate("/");
         } catch (error) {
+          console.log("Facebook Auth Error", error);
           console.log(error);
         }
       } else if (authProviderType === "linkedin") {
         try {
           const response = await getUserToken({ withCredentials: true });
           localStorage.removeItem("authProvider");
+          console.log("Linkedin Auth Response", response);
+
           storeUser(response.data);
           setError("");
           navigate("/");
         } catch (error) {
+          console.log("Linkedin Auth Error", error);
           console.log(error);
         }
       }
