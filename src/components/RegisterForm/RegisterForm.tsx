@@ -31,7 +31,6 @@ import ENDPOINTS from "../../config/endpoints";
 const Register = () => {
   const navigate = useNavigate();
   const [errors, setErrors] = useState([]);
-
   const authenticateViaGoogle = () => {
     window.open(ENDPOINTS.GOOGLE_AUTH_URL, "_self");
     localStorage.setItem("authProvider", "google");
