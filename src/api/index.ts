@@ -1,0 +1,34 @@
+import axios from "axios"
+
+export const baseURL = axios.create({
+    baseURL: 'http://localhost:5500',
+    headers: { 'content-type': 'application/json', accept: 'application/json' },
+});
+
+baseURL.interceptors.request.use((config)=>{
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    console.log(user)
+    if(user){
+        config.headers = {
+            ...config.headers,
+            Authorization: `Bearer ${user.accessToken}`,
+            RefreshToken: `Bearer ${user.refreshToken}`
+        }
+    }
+    return config
+}, err => {
+    console.log(err);
+})
+
+baseURL.interceptors.response.use(response =>{
+    console.log("Server Response" ,response);
+    return response
+},
+    error =>{
+        console.log("Server Response", error);
+        if(error.response.data?.isLoginRequired){
+            localStorage.removeItem("user")
+            window.location.href="/login"
+        }
+})
+ 
