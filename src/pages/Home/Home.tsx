@@ -10,7 +10,6 @@ import AddSleepEntry from "../../components/AddSleepEntry/AddSleepEntry";
 import EditSleepEntry from "../../components/EditSleepEntry/EditSleepEntry";
 import DeleteSleepEntry from "../../components/DeleteSleepEntry/DeleteSleepEntry";
 import { getAllSleepEntries } from "../../api/sleepEntry";
-import jwt_decode from "jwt-decode";
 
 interface EntryData {
   _id: string;
@@ -40,6 +39,7 @@ const Home = () => {
 
   useEffect(() => {
     (async function () {
+      console.log("Home Page", user);
       try {
         const sleepEntries = await getAllSleepEntries();
         setSleepEntries(sleepEntries.data);
