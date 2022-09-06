@@ -40,12 +40,14 @@ const Home = () => {
   useEffect(() => {
     (async function () {
       console.log("Home Page", user);
-      try {
-        const sleepEntries = await getAllSleepEntries();
-        setSleepEntries(sleepEntries.data);
-      } catch (error) {
-        console.log("Something Went Wrong");
-        console.error(error);
+      if (Object.keys(user).length > 0) {
+        try {
+          const sleepEntries = await getAllSleepEntries();
+          setSleepEntries(sleepEntries.data);
+        } catch (error) {
+          console.log("Something Went Wrong");
+          console.error(error);
+        }
       }
     })();
   }, []);

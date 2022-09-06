@@ -7,7 +7,6 @@ interface User {
     accessToken: string;
     refreshToken: string;
   };
-
   storeUser: (user: any) => void;
   removeUserFromStore: () => void;
 }
