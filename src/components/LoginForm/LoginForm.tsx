@@ -121,6 +121,7 @@ const Login = () => {
             console.log(loginData);
             try {
               const response = await loginUser(loginData);
+              console.log("Login Response", response);
               if (loginData.rememberMe) {
                 localStorage.setItem(
                   "login-remember-user",
