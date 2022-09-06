@@ -6,7 +6,7 @@ export const baseURL = axios.create({
 });
 
 baseURL.interceptors.request.use((config)=>{
-    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    const user = JSON.parse(localStorage.getItem("user") || "null");
     console.log(user)
     if(user){
         config.headers = {

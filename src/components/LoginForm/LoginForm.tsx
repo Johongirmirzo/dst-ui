@@ -62,6 +62,7 @@ const Login = () => {
         try {
           const response = await getUserToken({ withCredentials: true });
           localStorage.removeItem("authProvider");
+          console.log("User Token", response);
           storeUser(response.data);
           setError("");
           navigate("/");
