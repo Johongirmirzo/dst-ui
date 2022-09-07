@@ -117,7 +117,7 @@ const Login = () => {
             Please sign-in to your account and start the adventure
           </LoginDescription>
         </LoginTextBox>
-        <Formik
+        {/* <Formik
           initialValues={{
             email: loginRememberUserData.email || "",
             password: loginRememberUserData.password || "",
@@ -208,7 +208,7 @@ const Login = () => {
               </LoginButton>
             </LoginForm>
           )}
-        </Formik>
+        </Formik> */}
         <LoginRoutetext>
           Don't have an acoount yet?
           <Link

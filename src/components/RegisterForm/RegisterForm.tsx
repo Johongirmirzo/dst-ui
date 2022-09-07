@@ -63,7 +63,7 @@ const Register = () => {
             Please create an account and start the adventure
           </RegisterDescription>
         </RegisterTextBox>
-        <Formik
+        {/* <Formik
           initialValues={{
             username: "",
             email: "",
@@ -169,7 +169,7 @@ const Register = () => {
               </RegisterButton>
             </RegisterForm>
           )}
-        </Formik>
+        </Formik> */}
         <RegisterRoutetext>
           Already Have an account?{" "}
           <Link
