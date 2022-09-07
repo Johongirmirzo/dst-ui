@@ -1,7 +1,6 @@
 import axios from "axios"
 
 export const baseURL = axios.create({
-    // baseURL: 'http://localhost:8800',
     baseURL: 'https://daily-sleep-trackker.herokuapp.com',
     headers: { 'content-type': 'application/json', accept: 'application/json' },
     withCredentials: true

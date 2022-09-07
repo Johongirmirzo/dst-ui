@@ -7,13 +7,11 @@ const ENDPOINTS = {
     REGISTER_USER: "/auth/register",
     LOGIN_USER: "/auth/login",
     LOGOUT_USER: "/auth/logout",
-    USER_TOKEN_URL: "/auth/login/success",
-    FACEBOOK_AUTH_URL: "https://daily-sleep-trackker.herokuapp.com/auth/facebook",
-    GOOGLE_AUTH_URL: "https://daily-sleep-trackker.herokuapp.com/auth/google",
-    LINKEDIN_AUTH_URL: "https://daily-sleep-trackker.herokuapp.com/auth/linkedin"
-    // FACEBOOK_AUTH_URL: "http://localhost:8800/auth/facebook",
-    // GOOGLE_AUTH_URL: "http://localhost:8800/auth/google",
-    // LINKEDIN_AUTH_URL: "http://localhost:8800/auth/linkedin"
+    
+    // USER_TOKEN_URL: "/auth/login/success",
+    // FACEBOOK_AUTH_URL: "https://daily-sleep-trackker.herokuapp.com/auth/facebook",
+    // GOOGLE_AUTH_URL: "https://daily-sleep-trackker.herokuapp.com/auth/google",
+    // LINKEDIN_AUTH_URL: "https://daily-sleep-trackker.herokuapp.com/auth/linkedin"
 }
 
 export default ENDPOINTS
