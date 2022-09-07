@@ -87,10 +87,11 @@ const Login = () => {
           const response = await getUserToken({ withCredentials: true });
           localStorage.removeItem("authProvider");
           console.log("Linkedin Auth Response", response);
-
-          storeUser(response.data);
-          setError("");
-          navigate("/");
+          if (response) {
+            storeUser(response.data);
+            setError("");
+            navigate("/");
+          }
         } catch (error) {
           console.log("Linkedin Auth Error", error);
           console.log(error);
