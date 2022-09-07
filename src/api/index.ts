@@ -3,6 +3,7 @@ import axios from "axios"
 export const baseURL = axios.create({
     baseURL: 'https://daily-sleep-trackker.herokuapp.com',
     headers: { 'content-type': 'application/json', accept: 'application/json' },
+    withCredentials: true
 });
 
 baseURL.interceptors.request.use((config)=>{
