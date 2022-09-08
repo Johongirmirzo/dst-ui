@@ -40,9 +40,9 @@ const SleepDurationGraph = ({ sleepEntries }) => {
               width={500}
               height={300}
               data={entries}
-              margin={{ top: 0, right: 0, left: 0, bottom: 15 }}
+              margin={{ top: 0, right: 15, left: 0, bottom: 15 }}
             >
-              <XAxis dataKey="name" padding={{ left: 30, right: 0 }} />
+              <XAxis dataKey="name" padding={{ left: 10, right: 0 }} />
               <YAxis />
               <Tooltip />
               <Legend />
