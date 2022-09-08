@@ -10,15 +10,7 @@ import AddSleepEntry from "../../components/AddSleepEntry/AddSleepEntry";
 import EditSleepEntry from "../../components/EditSleepEntry/EditSleepEntry";
 import DeleteSleepEntry from "../../components/DeleteSleepEntry/DeleteSleepEntry";
 import { getAllSleepEntries } from "../../api/sleepEntry";
-
-interface EntryData {
-  _id: string;
-  user: string;
-  sleepDate: string;
-  sleepTime: string;
-  sleepDuration: string;
-  wakeupTime: string;
-}
+import { SleepEntryDataInterface } from "../../types/sleepEntry";
 
 const Home = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -33,7 +25,9 @@ const Home = () => {
     onClose: onEditModalClose,
   } = useDisclosure();
   const { user } = useContext(AuthContext);
-  const [sleepEntries, setSleepEntries] = useState<EntryData[]>([]);
+  const [sleepEntries, setSleepEntries] = useState<SleepEntryDataInterface[]>(
+    []
+  );
   const [sleepEntryId, setSleepEntryId] = useState("");
   const [sleepEntryIdToDelete, setSleepEntryIdToDelete] = useState("");
 
@@ -60,7 +54,7 @@ const Home = () => {
     setSleepEntryId(id);
     onEditModalOpen();
   };
-  const addNewSleepEntry = (sleepEntry: EntryData) => {
+  const addNewSleepEntry = (sleepEntry: SleepEntryDataInterface) => {
     setSleepEntries([...sleepEntries, sleepEntry]);
   };
   const deleteSleepEntry = (sleepEntryId: string) => {
@@ -69,7 +63,7 @@ const Home = () => {
       sleepEntries.filter((sleepEntry) => sleepEntry._id !== sleepEntryId)
     );
   };
-  const editSleepEntry = (sleepEntryToEdit: EntryData) => {
+  const editSleepEntry = (sleepEntryToEdit: SleepEntryDataInterface) => {
     setSleepEntries(
       sleepEntries.map((sleepEntry) =>
         sleepEntry._id === sleepEntryToEdit._id ? sleepEntryToEdit : sleepEntry

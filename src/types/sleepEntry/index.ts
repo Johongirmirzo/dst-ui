@@ -6,8 +6,8 @@ export interface SleepEntryFormInterface {
 export interface SleepEntryDataInterface extends SleepEntryFormInterface{
     _id: string;
     id: string;
-    sleepDuration: string;
     user: string;
+    sleepDuration: string;
 }
 
 

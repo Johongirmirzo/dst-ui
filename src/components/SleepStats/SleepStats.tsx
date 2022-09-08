@@ -2,17 +2,11 @@ import React from "react";
 import { TableContainer, Heading, Box } from "@chakra-ui/react";
 import SleepStatsList from "./SleepStatsList/SleepStatsList";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
+import { SleepEntryDataInterface } from "../../types/sleepEntry";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
-interface EntryData {
-  _id: string;
-  user: string;
-  sleepDate: string;
-  sleepTime: string;
-  wakeupTime: string;
-}
 type SleepStatsTyp = {
-  sleepEntries: EntryData[];
+  sleepEntries: SleepEntryDataInterface[];
   getSleepEntryId: (id: string) => void;
   getSleepEntryIdToDelete: (id: string) => void;
 };
