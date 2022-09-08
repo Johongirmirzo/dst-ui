@@ -86,7 +86,7 @@ const AddSleepEntry = ({
               mt="3"
               type="submit"
             >
-              {!agreementTerm ? (
+              {agreementTerm ? (
                 <CircularProgress isIndeterminate value={80} size="30px" />
               ) : (
                 "I understand the consequences"
