@@ -8,6 +8,7 @@ import {
   ModalBody,
   Text,
   Button,
+  CircularProgress,
 } from "@chakra-ui/react";
 import { SleepEntryInput } from "./DeleteSleepEntry.styled";
 import { removeSleepEntry } from "../../api/sleepEntry";
@@ -31,9 +32,9 @@ const AddSleepEntry = ({
     if (sleepEntryIdToDelete) {
       (async function () {
         try {
+          setAgreementTerm("");
           await removeSleepEntry(sleepEntryIdToDelete);
           deleteSleepEntry(sleepEntryIdToDelete);
-          setAgreementTerm("");
           onDeleteModalClose();
         } catch (error) {
           console.log(error);
@@ -83,8 +84,13 @@ const AddSleepEntry = ({
               colorScheme="red"
               w="100%"
               mt="3"
+              type="submit"
             >
-              I understand the consequences
+              {!agreementTerm ? (
+                <CircularProgress isIndeterminate value={80} size="30px" />
+              ) : (
+                "I understand the consequences"
+              )}
             </Button>
           </ModalBody>
         </ModalContent>
