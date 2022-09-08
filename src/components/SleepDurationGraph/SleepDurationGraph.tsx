@@ -36,7 +36,12 @@ const SleepDurationGraph = ({ sleepEntries }) => {
             Sleep Duration
           </Heading>
           <ResponsiveContainer width="100%" height="500" aspect={2}>
-            <LineChart width={500} height={300} data={entries}>
+            <LineChart
+              width={500}
+              height={300}
+              data={entries}
+              margin={{ top: 0, right: 0, left: 0, bottom: 15 }}
+            >
               <XAxis dataKey="name" padding={{ left: 30, right: 0 }} />
               <YAxis />
               <Tooltip />
