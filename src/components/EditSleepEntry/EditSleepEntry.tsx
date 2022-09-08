@@ -177,7 +177,7 @@ const EditSleepEntry = ({
                           size="30px"
                         />
                       ) : (
-                        "Add New Sleep Entry"
+                        "Edit Sleep Entry"
                       )}
                     </EditSleepEntryButton>
                   </EditSleepEntryForm>
