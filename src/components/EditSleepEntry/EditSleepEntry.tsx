@@ -6,6 +6,7 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
+  CircularProgress,
 } from "@chakra-ui/react";
 import {
   EditSleepEntryForm,
@@ -37,6 +38,7 @@ const EditSleepEntry = ({
   sleepEntries,
 }: EditSleepEntryProps) => {
   const [sleepEntry, setSleepEntry] = useState({} as SleepEntryDataInterface);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (sleepEntryId) {
@@ -84,8 +86,10 @@ const EditSleepEntry = ({
                       );
                       editSleepEntry(updatedSleepEntry.data);
                       resetForm();
+                      setError("");
                       onEditModalClose();
                     } catch (error) {
+                      setError("Error");
                       console.error(error);
                     }
                   })();
@@ -93,9 +97,9 @@ const EditSleepEntry = ({
               >
                 {({
                   handleSubmit,
-
                   handleChange,
                   handleBlur,
+                  isSubmitting,
                   values,
                   errors,
                   touched,
@@ -158,8 +162,23 @@ const EditSleepEntry = ({
                         </EditSleepEntryFieldError>
                       ) : null}
                     </EditSleepEntryFormControl>
-                    <EditSleepEntryButton type="submit">
-                      Edit Sleep Entry
+                    <EditSleepEntryButton
+                      style={
+                        isSubmitting && !error
+                          ? { opacity: ".4", cursor: "not-allowed" }
+                          : { opacity: "1", cursor: "pointer" }
+                      }
+                      type="submit"
+                    >
+                      {isSubmitting && !error ? (
+                        <CircularProgress
+                          isIndeterminate
+                          value={80}
+                          size="30px"
+                        />
+                      ) : (
+                        "Add New Sleep Entry"
+                      )}
                     </EditSleepEntryButton>
                   </EditSleepEntryForm>
                 )}

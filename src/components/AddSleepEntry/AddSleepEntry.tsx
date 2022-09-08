@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -6,6 +6,7 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
+  CircularProgress,
 } from "@chakra-ui/react";
 import {
   SleepEntryForm,
@@ -31,6 +32,7 @@ const AddSleepEntry = ({
   onClose,
   addNewSleepEntry,
 }: SleepEntryProps) => {
+  const [error, setError] = useState("");
   return (
     <>
       <Modal isCentered isOpen={isOpen} onClose={onClose}>
@@ -58,14 +60,23 @@ const AddSleepEntry = ({
                     console.log(newSleepEntryData, "New SLeep Entry Added");
                     resetForm();
                     addNewSleepEntry(newSleepEntryData.data);
+                    setError("");
                     onClose();
                   } catch (error) {
+                    setError("Error");
                     console.error(error);
                   }
                 })();
               }}
             >
-              {({ handleSubmit, handleChange, values, errors, touched }) => (
+              {({
+                handleSubmit,
+                handleChange,
+                values,
+                errors,
+                touched,
+                isSubmitting,
+              }) => (
                 <SleepEntryForm onSubmit={handleSubmit}>
                   <SleepEntryFormControl>
                     <SleepEntryLabel htmlFor="sleepDate">
@@ -121,8 +132,23 @@ const AddSleepEntry = ({
                       </SleepEntryFieldError>
                     ) : null}
                   </SleepEntryFormControl>
-                  <SleepEntryButton type="submit">
-                    Add New Sleep Entry
+                  <SleepEntryButton
+                    style={
+                      isSubmitting && !error
+                        ? { opacity: ".4", cursor: "not-allowed" }
+                        : { opacity: "1", cursor: "pointer" }
+                    }
+                    type="submit"
+                  >
+                    {isSubmitting && !error ? (
+                      <CircularProgress
+                        isIndeterminate
+                        value={80}
+                        size="30px"
+                      />
+                    ) : (
+                      "Add New Sleep Entry"
+                    )}
                   </SleepEntryButton>
                 </SleepEntryForm>
               )}
