@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -14,16 +14,17 @@ import {
   EditSleepEntryLabel,
   EditSleepEntryInput,
   EditSleepEntryButton,
-  EditSleepEntryRoutetext,
   EditSleepEntryFieldError,
 } from "./EditSleepEntry.styled";
 import { sleepEntrySchema } from "../../schemas/sleepEntrySchema";
 import { Formik } from "formik";
 import { updateSleepEntry, getSleepEntry } from "../../api/sleepEntry";
 import { SleepEntryDataInterface } from "../../types/sleepEntry";
+import { ThemeContext } from "../../context/ThemeContext";
 
 type EditSleepEntryProps = {
   isEditModalOpen: boolean;
+  isLightMode: boolean;
   sleepEntryId: string;
   onEditModalClose: () => void;
   editSleepEntry: (sleepEntry: SleepEntryDataInterface) => void;
@@ -32,11 +33,13 @@ type EditSleepEntryProps = {
 
 const EditSleepEntry = ({
   isEditModalOpen,
+  isLightMode,
   sleepEntryId,
   onEditModalClose,
   editSleepEntry,
   sleepEntries,
 }: EditSleepEntryProps) => {
+  const { theme } = useContext(ThemeContext);
   const [sleepEntry, setSleepEntry] = useState({} as SleepEntryDataInterface);
   const [error, setError] = useState("");
 
@@ -61,7 +64,9 @@ const EditSleepEntry = ({
           bg="blackAlpha.300"
           backdropFilter="blur(10px) hue-rotate(90deg)"
         />
-        <ModalContent>
+        <ModalContent
+          sx={isLightMode ? { ...theme.lightMode } : { ...theme.darkMode }}
+        >
           <ModalHeader>Edit Sleep Entry</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
@@ -117,6 +122,11 @@ const EditSleepEntry = ({
                         onChange={handleChange}
                         onBlur={handleBlur}
                         placeholder="Enter Edit Date"
+                        style={
+                          isLightMode
+                            ? { color: theme.lightMode.color }
+                            : { color: theme.darkMode.color }
+                        }
                       />
                       {errors.sleepDate && touched.sleepDate ? (
                         <EditSleepEntryFieldError>
@@ -136,6 +146,11 @@ const EditSleepEntry = ({
                         onChange={handleChange}
                         onBlur={handleBlur}
                         placeholder="Enter Edit Time"
+                        style={
+                          isLightMode
+                            ? { color: theme.lightMode.color }
+                            : { color: theme.darkMode.color }
+                        }
                       />
                       {errors.sleepTime && touched.sleepTime ? (
                         <EditSleepEntryFieldError>
@@ -155,6 +170,11 @@ const EditSleepEntry = ({
                         onChange={handleChange}
                         onBlur={handleBlur}
                         placeholder="Enter Wakeup Time"
+                        style={
+                          isLightMode
+                            ? { color: theme.lightMode.color }
+                            : { color: theme.darkMode.color }
+                        }
                       />
                       {errors.wakeupTime && touched.wakeupTime ? (
                         <EditSleepEntryFieldError>

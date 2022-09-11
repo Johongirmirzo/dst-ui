@@ -3,6 +3,7 @@ import { Box } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import ThemeChanger from "../ThemeChanger/ThemeChanger";
 import { logoutUser } from "../../api/user";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -35,6 +36,7 @@ const Navbar = () => {
             <Heading fontSize={{ base: "15", sm: "20", md: "24" }}>
               Hello {user && user.username}
             </Heading>
+            <ThemeChanger />
             <Button onClick={logoutUserFromApp} colorScheme="red">
               Logout
             </Button>
@@ -50,7 +52,7 @@ const Navbar = () => {
             >
               Register
             </Button>
-            <Button as={Link} to="/login" border="1px" borderColor="lightgray">
+            <Button as={Link} to="/login" colorScheme="green">
               Login
             </Button>
           </>

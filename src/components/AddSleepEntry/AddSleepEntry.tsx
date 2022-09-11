@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -18,21 +18,26 @@ import {
 } from "./AddSleepEntry.styled";
 import { sleepEntrySchema } from "../../schemas/sleepEntrySchema";
 import { Formik } from "formik";
+import { ThemeContext } from "../../context/ThemeContext";
 import { addSleepEntry } from "../../api/sleepEntry";
 import { SleepEntryDataInterface } from "../../types/sleepEntry";
 
 type SleepEntryProps = {
   isOpen: boolean;
+  isLightMode: boolean;
   onClose: () => void;
   addNewSleepEntry: (sleepEntry: SleepEntryDataInterface) => void;
 };
 
 const AddSleepEntry = ({
   isOpen,
+  isLightMode,
   onClose,
   addNewSleepEntry,
 }: SleepEntryProps) => {
+  const { theme } = useContext(ThemeContext);
   const [error, setError] = useState("");
+
   return (
     <>
       <Modal isCentered isOpen={isOpen} onClose={onClose}>
@@ -40,7 +45,9 @@ const AddSleepEntry = ({
           bg="blackAlpha.300"
           backdropFilter="blur(10px) hue-rotate(90deg)"
         />
-        <ModalContent>
+        <ModalContent
+          sx={isLightMode ? { ...theme.lightMode } : { ...theme.darkMode }}
+        >
           <ModalHeader>Add New Sleep Entry</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
@@ -89,6 +96,11 @@ const AddSleepEntry = ({
                       value={values.sleepDate}
                       onChange={handleChange}
                       placeholder="Enter Sleep Date"
+                      style={
+                        isLightMode
+                          ? { color: theme.lightMode.color }
+                          : { color: theme.darkMode.color }
+                      }
                     />
                     {errors.sleepDate && touched.sleepDate ? (
                       <SleepEntryFieldError>
@@ -107,6 +119,11 @@ const AddSleepEntry = ({
                       value={values.sleepTime}
                       onChange={handleChange}
                       placeholder="Enter Sleep Time"
+                      style={
+                        isLightMode
+                          ? { color: theme.lightMode.color }
+                          : { color: theme.darkMode.color }
+                      }
                     />
                     {errors.sleepTime && touched.sleepTime ? (
                       <SleepEntryFieldError>
@@ -125,6 +142,11 @@ const AddSleepEntry = ({
                       value={values.wakeupTime}
                       onChange={handleChange}
                       placeholder="Enter Wakeup Time"
+                      style={
+                        isLightMode
+                          ? { color: theme.lightMode.color }
+                          : { color: theme.darkMode.color }
+                      }
                     />
                     {errors.wakeupTime && touched.wakeupTime ? (
                       <SleepEntryFieldError>

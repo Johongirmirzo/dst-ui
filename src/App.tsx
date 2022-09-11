@@ -6,7 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 const Home = React.lazy(() => import("./pages/Home/Home"));
 const Register = React.lazy(() => import("./pages/Register/Register"));
 const Login = React.lazy(() => import("./pages/Login/Login"));
-const NotFound = React.lazy(() => import("./pages/Home/Home"));
+const NotFound = React.lazy(() => import("./pages/NotFound/NotFound"));
 
 const App = () => {
   return (

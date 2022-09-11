@@ -3,17 +3,17 @@ import SleepStatsItem from "./SleepStatsItem/SleepStatsItem";
 import { SleepEntryDataInterface } from "../../../types/sleepEntry";
 
 type SleepStatsListProps = {
-  sleepEntries: SleepEntryDataInterface[];
+  paginatedSleepEntries: SleepEntryDataInterface[];
   getSleepEntryId: (id: string) => void;
   getSleepEntryIdToDelete: (id: string) => void;
 };
 
 const SleepStatsList = ({
-  sleepEntries,
+  paginatedSleepEntries,
   getSleepEntryId,
   getSleepEntryIdToDelete,
 }: SleepStatsListProps) => {
-  return sleepEntries.map((sleepEntry) => (
+  return paginatedSleepEntries.map((sleepEntry) => (
     <SleepStatsItem
       sleepEntry={sleepEntry}
       key={sleepEntry._id}

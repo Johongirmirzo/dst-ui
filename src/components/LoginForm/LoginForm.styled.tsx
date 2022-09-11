@@ -13,6 +13,10 @@ import {
   FormFieldError,
 } from "../../styles/FormStyles.styled";
 
+interface LoginInputProps {
+  isDarkMode: boolean;
+}
+
 const LoginBox = styled.div`
   background: #f7f7f7;
   min-height: 100vh;
@@ -42,10 +46,15 @@ const LoginDescription = styled.p`
   padding-top: 5px;
   font-size: 1.1rem;
 `;
+
 const LoginForm = styled(Form)``;
 const LoginFormControl = styled(FormControl)``;
 const LoginLabel = styled(FormLabel)``;
-const LoginInput = styled(FormInput)``;
+const LoginInput = styled(FormInput)<LoginInputProps>`
+  &::placeholder {
+    color: ${(props) => (props.isDarkMode ? "#999999" : "")};
+  }
+`;
 const LoginButton = styled(FormButton)``;
 const LoginRoutetext = styled(FormRoutetext)``;
 const LoginFieldError = styled(FormFieldError)``;

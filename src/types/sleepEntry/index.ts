@@ -9,6 +9,11 @@ export interface SleepEntryDataInterface extends SleepEntryFormInterface{
     user: string;
     sleepDuration: string;
 }
+export interface SleepEntryListInterface{
+    sleepEntries: SleepEntryDataInterface[]
+}
 
-
+export interface AverageCompProps  {
+    sleepEntries: SleepEntryDataInterface[]
+}
  

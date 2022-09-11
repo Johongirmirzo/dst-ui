@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Formik } from "formik";
 import { Box, Alert, AlertIcon, CircularProgress } from "@chakra-ui/react";
 import { AuthContext } from "../../context/AuthContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import { registerSchema } from "../../schemas/registerSchema";
 import {
   RegisterBox,
@@ -29,6 +30,8 @@ import { registerUser } from "../../api/user";
 import ENDPOINTS from "../../config/endpoints";
 
 const Register = () => {
+  const { isLightMode, theme } = useContext(ThemeContext);
+
   const navigate = useNavigate();
   const [errors, setErrors] = useState([]);
 
@@ -46,8 +49,12 @@ const Register = () => {
   // };
 
   return (
-    <RegisterBox>
-      <RegisterFormBox>
+    <RegisterBox
+      style={isLightMode ? { ...theme.lightMode } : { ...theme.darkMode }}
+    >
+      <RegisterFormBox
+        style={isLightMode ? { ...theme.lightMode } : { ...theme.darkMode }}
+      >
         {Object.keys(errors).length > 0 && (
           <Box p="4">
             {Object.values(errors).map((err) => (
@@ -59,8 +66,22 @@ const Register = () => {
           </Box>
         )}
         <RegisterTextBox>
-          <RegisterTitle>Kanban Task Management</RegisterTitle>
-          <RegisterDescription>
+          <RegisterTitle
+            style={
+              isLightMode
+                ? { color: theme.lightMode.color }
+                : { color: theme.darkMode.color }
+            }
+          >
+            Daily Sleep Tracker
+          </RegisterTitle>
+          <RegisterDescription
+            style={
+              isLightMode
+                ? { color: theme.lightMode.gray }
+                : { color: theme.darkMode.gray }
+            }
+          >
             Please create an account and start the adventure
           </RegisterDescription>
         </RegisterTextBox>
@@ -90,7 +111,16 @@ const Register = () => {
           {(props) => (
             <RegisterForm onSubmit={props.handleSubmit}>
               <RegisterFormControl>
-                <RegisterLabel htmlFor="username">Username</RegisterLabel>
+                <RegisterLabel
+                  htmlFor="username"
+                  style={
+                    isLightMode
+                      ? { color: theme.lightMode.color }
+                      : { color: theme.darkMode.color }
+                  }
+                >
+                  Username
+                </RegisterLabel>
                 <RegisterInput
                   type="text"
                   id="username"
@@ -98,6 +128,12 @@ const Register = () => {
                   placeholder="Please enter username"
                   value={props.values.username}
                   onChange={props.handleChange}
+                  isDarkMode={isLightMode ? false : true}
+                  style={
+                    isLightMode
+                      ? { color: theme.lightMode.color }
+                      : { color: theme.darkMode.color }
+                  }
                 />
                 {props.errors.username && props.touched.username ? (
                   <RegisterFieldError>
@@ -106,7 +142,16 @@ const Register = () => {
                 ) : null}
               </RegisterFormControl>
               <RegisterFormControl>
-                <RegisterLabel htmlFor="email">Email</RegisterLabel>
+                <RegisterLabel
+                  style={
+                    isLightMode
+                      ? { color: theme.lightMode.color }
+                      : { color: theme.darkMode.color }
+                  }
+                  htmlFor="email"
+                >
+                  Email
+                </RegisterLabel>
                 <RegisterInput
                   type="email"
                   id="email"
@@ -114,13 +159,28 @@ const Register = () => {
                   placeholder="Please enter email"
                   value={props.values.email}
                   onChange={props.handleChange}
+                  isDarkMode={isLightMode ? false : true}
+                  style={
+                    isLightMode
+                      ? { color: theme.lightMode.color }
+                      : { color: theme.darkMode.color }
+                  }
                 />
                 {props.errors.email && props.touched.email ? (
                   <RegisterFieldError>{props.errors.email}</RegisterFieldError>
                 ) : null}
               </RegisterFormControl>
               <RegisterFormControl>
-                <RegisterLabel htmlFor="password">Password</RegisterLabel>
+                <RegisterLabel
+                  style={
+                    isLightMode
+                      ? { color: theme.lightMode.color }
+                      : { color: theme.darkMode.color }
+                  }
+                  htmlFor="password"
+                >
+                  Password
+                </RegisterLabel>
                 <RegisterInput
                   type="password"
                   id="password"
@@ -128,6 +188,12 @@ const Register = () => {
                   placeholder="Please enter password"
                   value={props.values.password}
                   onChange={props.handleChange}
+                  isDarkMode={isLightMode ? false : true}
+                  style={
+                    isLightMode
+                      ? { color: theme.lightMode.color }
+                      : { color: theme.darkMode.color }
+                  }
                 />
                 {props.errors.password && props.touched.password ? (
                   <RegisterFieldError>
@@ -136,7 +202,14 @@ const Register = () => {
                 ) : null}
               </RegisterFormControl>
               <RegisterFormControl>
-                <RegisterLabel htmlFor="c-password">
+                <RegisterLabel
+                  style={
+                    isLightMode
+                      ? { color: theme.lightMode.color }
+                      : { color: theme.darkMode.color }
+                  }
+                  htmlFor="c-password"
+                >
                   Confirm Password
                 </RegisterLabel>
                 <RegisterInput
@@ -146,6 +219,12 @@ const Register = () => {
                   placeholder="Please confirm password"
                   value={props.values.confirmPassword}
                   onChange={props.handleChange}
+                  isDarkMode={isLightMode ? false : true}
+                  style={
+                    isLightMode
+                      ? { color: theme.lightMode.color }
+                      : { color: theme.darkMode.color }
+                  }
                 />
                 {props.errors.confirmPassword &&
                 props.touched.confirmPassword ? (
@@ -171,7 +250,13 @@ const Register = () => {
             </RegisterForm>
           )}
         </Formik>
-        <RegisterRoutetext>
+        <RegisterRoutetext
+          style={
+            isLightMode
+              ? { color: theme.lightMode.color }
+              : { color: theme.darkMode.color }
+          }
+        >
           Already Have an account?{" "}
           <Link
             to="/login"

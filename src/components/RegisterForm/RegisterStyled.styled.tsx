@@ -13,6 +13,10 @@ import {
   FormFieldError,
 } from "../../styles/FormStyles.styled";
 
+interface RegisterInputProps {
+  isDarkMode: boolean;
+}
+
 const RegisterBox = styled.div`
   background: #f7f7f7;
   min-height: 100vh;
@@ -46,7 +50,11 @@ const RegisterDescription = styled.p`
 const RegisterForm = styled(Form)``;
 const RegisterFormControl = styled(FormControl)``;
 const RegisterLabel = styled(FormLabel)``;
-const RegisterInput = styled(FormInput)``;
+const RegisterInput = styled(FormInput)<RegisterInputProps>`
+  &::placeholder {
+    color: ${(props) => (props.isDarkMode ? "#999999" : "")};
+  }
+`;
 const RegisterButton = styled(FormButton)``;
 const RegisterRoutetext = styled(FormRoutetext)``;
 const RegisterFieldError = styled(FormFieldError)``;

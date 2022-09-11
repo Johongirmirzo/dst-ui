@@ -10,13 +10,22 @@ import {
 } from "recharts";
 import moment from "moment";
 import { Heading } from "@chakra-ui/react";
+import {
+  SleepEntryListInterface,
+  SleepEntryDataInterface,
+} from "../../types/sleepEntry";
 
-const SleepDurationGraph = ({ sleepEntries }) => {
-  const [entries, setEntries] = useState([]);
+interface SleepDurationGraphInterface {
+  name: string;
+  totalHours: number;
+  "Hours Slept": number;
+}
+const SleepDurationGraph = ({ sleepEntries }: SleepEntryListInterface) => {
+  const [entries, setEntries] = useState<SleepDurationGraphInterface[]>([]);
 
   useEffect(() => {
     setEntries(
-      sleepEntries.map((entry) => ({
+      sleepEntries.map((entry: SleepEntryDataInterface) => ({
         name: moment(entry.sleepDate).format("MM/DD/yy"),
         totalHours: 24,
         "Hours Slept": Number(
@@ -37,10 +46,8 @@ const SleepDurationGraph = ({ sleepEntries }) => {
           </Heading>
           <ResponsiveContainer width="100%" height="500" aspect={2}>
             <LineChart
-              width={500}
-              height={300}
               data={entries}
-              margin={{ top: 0, right: 15, left: 0, bottom: 15 }}
+              margin={{ top: 10, right: 15, left: 0, bottom: 15 }}
             >
               <XAxis dataKey="name" padding={{ left: 10, right: 0 }} />
               <YAxis />

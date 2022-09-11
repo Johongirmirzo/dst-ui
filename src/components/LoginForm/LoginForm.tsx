@@ -24,11 +24,13 @@ import {
   LoginRoutetext,
   LoginFieldError,
 } from "./LoginForm.styled";
+import { ThemeContext } from "../../context/ThemeContext";
 import { getUserToken, loginUser } from "../../api/user";
 import ENDPOINTS from "../../config/endpoints";
 
 const Login = () => {
   const { storeUser } = useContext(AuthContext);
+  const { isLightMode, theme } = useContext(ThemeContext);
   const loginRememberUserData = JSON.parse(
     localStorage.getItem("login-remember-user") || "{}"
   );
@@ -94,19 +96,45 @@ const Login = () => {
   // }, []);
 
   return (
-    <LoginBox>
-      <LoginFormBox>
+    <LoginBox
+      style={isLightMode ? { ...theme.lightMode } : { ...theme.darkMode }}
+    >
+      <LoginFormBox
+        style={isLightMode ? { ...theme.lightMode } : { ...theme.darkMode }}
+      >
         {error && (
           <Box>
-            <Alert status="error" mb="2">
+            <Alert
+              status="error"
+              mb="2"
+              sx={
+                isLightMode
+                  ? { ...theme.lightMode }
+                  : { background: "#743d3d", color: "#fff !important" }
+              }
+            >
               <AlertIcon />
               {error}
             </Alert>
           </Box>
         )}
         <LoginTextBox>
-          <LoginTitle>Kanban Task Management</LoginTitle>
-          <LoginDescription>
+          <LoginTitle
+            style={
+              isLightMode
+                ? { color: theme.lightMode.color }
+                : { color: theme.darkMode.color }
+            }
+          >
+            Daily Sleep Tracker
+          </LoginTitle>
+          <LoginDescription
+            style={
+              isLightMode
+                ? { color: theme.lightMode.gray }
+                : { color: theme.darkMode.gray }
+            }
+          >
             Please sign-in to your account and start the adventure
           </LoginDescription>
         </LoginTextBox>
@@ -148,7 +176,16 @@ const Login = () => {
           }) => (
             <LoginForm onSubmit={handleSubmit}>
               <LoginFormControl>
-                <LoginLabel htmlFor="email">Email</LoginLabel>
+                <LoginLabel
+                  htmlFor="email"
+                  style={
+                    isLightMode
+                      ? { color: theme.lightMode.color }
+                      : { color: theme.darkMode.color }
+                  }
+                >
+                  Email
+                </LoginLabel>
                 <LoginInput
                   type="email"
                   id="email"
@@ -156,6 +193,12 @@ const Login = () => {
                   placeholder="Please enter email"
                   value={values.email}
                   onChange={handleChange}
+                  isDarkMode={isLightMode ? false : true}
+                  style={
+                    isLightMode
+                      ? { color: theme.lightMode.color }
+                      : { color: theme.darkMode.color }
+                  }
                 />
                 {errors.email && touched.email ? (
                   <LoginFieldError>{errors.email}</LoginFieldError>
@@ -163,7 +206,16 @@ const Login = () => {
               </LoginFormControl>
 
               <LoginFormControl>
-                <LoginLabel htmlFor="password">Password</LoginLabel>
+                <LoginLabel
+                  htmlFor="password"
+                  style={
+                    isLightMode
+                      ? { color: theme.lightMode.color }
+                      : { color: theme.darkMode.color }
+                  }
+                >
+                  Password
+                </LoginLabel>
                 <LoginInput
                   type="password"
                   id="password"
@@ -171,6 +223,12 @@ const Login = () => {
                   placeholder="Please enter password"
                   value={values.password}
                   onChange={handleChange}
+                  isDarkMode={isLightMode ? false : true}
+                  style={
+                    isLightMode
+                      ? { color: theme.lightMode.color }
+                      : { color: theme.darkMode.color }
+                  }
                 />
                 {errors.password && touched.password ? (
                   <LoginFieldError>{errors.password}</LoginFieldError>
@@ -202,7 +260,9 @@ const Login = () => {
             </LoginForm>
           )}
         </Formik>
-        <LoginRoutetext>
+        <LoginRoutetext
+          style={isLightMode ? { color: "#1a202c" } : { color: "#fff" }}
+        >
           Don't have an acoount yet?
           <Link
             to="/register"
