@@ -12,7 +12,7 @@ const Info = ({ isLightMode }: { isLightMode: boolean }) => {
         fontWeight="600"
         fontSize="18"
       >
-        Daily Sleep Tracker is the app which let's track your weekly sleep
+        Daily Sleep Tracker is the app which let's track your daily sleep
         schedules. It displays graph which let's you see your sleeping patterns
         and table which let's see you see your sleep date, sleep time, wakeup
         time and sleep duration. You can also edit, delete individual sleeping
