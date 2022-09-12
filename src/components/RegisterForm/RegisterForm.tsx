@@ -35,18 +35,18 @@ const Register = () => {
   const navigate = useNavigate();
   const [errors, setErrors] = useState([]);
 
-  // const authenticateViaGoogle = () => {
-  //   window.open(ENDPOINTS.GOOGLE_AUTH_URL, "_self");
-  //   localStorage.setItem("authProvider", "google");
-  // };
-  // const authenticateViaFacebook = () => {
-  //   window.open(ENDPOINTS.FACEBOOK_AUTH_URL, "_self");
-  //   localStorage.setItem("authProvider", "facebook");
-  // };
-  // const authenticateViaLinkedin = () => {
-  //   window.open(ENDPOINTS.LINKEDIN_AUTH_URL, "_self");
-  //   localStorage.setItem("authProvider", "linkedin");
-  // };
+  const authenticateViaGoogle = () => {
+    window.open(ENDPOINTS.GOOGLE_AUTH_URL, "_self");
+    localStorage.setItem("authProvider", "google");
+  };
+  const authenticateViaFacebook = () => {
+    window.open(ENDPOINTS.FACEBOOK_AUTH_URL, "_self");
+    localStorage.setItem("authProvider", "facebook");
+  };
+  const authenticateViaLinkedin = () => {
+    window.open(ENDPOINTS.LINKEDIN_AUTH_URL, "_self");
+    localStorage.setItem("authProvider", "linkedin");
+  };
 
   return (
     <RegisterBox
@@ -265,7 +265,7 @@ const Register = () => {
             Sign In
           </Link>
         </RegisterRoutetext>
-        {/* <RegisterHrBox>
+        <RegisterHrBox>
           <RegisterHr />
           <RegisterHrText>or sign up with</RegisterHrText>
           <RegisterHr />
@@ -274,7 +274,7 @@ const Register = () => {
           <RegisterFacebookIcon onClick={authenticateViaFacebook} />
           <RegisterGoogleIcon onClick={authenticateViaGoogle} />
           <RegisterTwitterIcon onClick={authenticateViaLinkedin} />
-        </RegisterIconsBox> */}
+        </RegisterIconsBox>
       </RegisterFormBox>
     </RegisterBox>
   );
