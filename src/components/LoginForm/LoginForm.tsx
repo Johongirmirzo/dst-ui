@@ -107,7 +107,11 @@ const Login = () => {
       style={isLightMode ? { ...theme.lightMode } : { ...theme.darkMode }}
     >
       <LoginFormBox
-        style={isLightMode ? { ...theme.lightMode } : { ...theme.darkMode }}
+        style={
+          isLightMode
+            ? { ...theme.lightMode }
+            : { ...theme.darkMode, background: "hsl(220, 35%, 20%)" }
+        }
       >
         {error && (
           <Box>

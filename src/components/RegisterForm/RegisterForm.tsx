@@ -53,7 +53,11 @@ const Register = () => {
       style={isLightMode ? { ...theme.lightMode } : { ...theme.darkMode }}
     >
       <RegisterFormBox
-        style={isLightMode ? { ...theme.lightMode } : { ...theme.darkMode }}
+        style={
+          isLightMode
+            ? { ...theme.lightMode }
+            : { ...theme.darkMode, background: "hsl(220, 35%, 20%)" }
+        }
       >
         {Object.keys(errors).length > 0 && (
           <Box p="4">
