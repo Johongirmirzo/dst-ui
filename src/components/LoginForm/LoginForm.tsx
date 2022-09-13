@@ -44,63 +44,63 @@ const Login = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
-  const authenticateViaGoogle = () => {
-    window.open(ENDPOINTS.GOOGLE_AUTH_URL, "_self");
-    localStorage.setItem("authProvider", "google");
-  };
-  const authenticateViaFacebook = () => {
-    window.open(ENDPOINTS.FACEBOOK_AUTH_URL, "_self");
-    localStorage.setItem("authProvider", "facebook");
-  };
-  const authenticateViaLinkedin = () => {
-    window.open(ENDPOINTS.LINKEDIN_AUTH_URL, "_self");
-    localStorage.setItem("authProvider", "linkedin");
-  };
+  // const authenticateViaGoogle = () => {
+  //   window.open(ENDPOINTS.GOOGLE_AUTH_URL, "_self");
+  //   localStorage.setItem("authProvider", "google");
+  // };
+  // const authenticateViaFacebook = () => {
+  //   window.open(ENDPOINTS.FACEBOOK_AUTH_URL, "_self");
+  //   localStorage.setItem("authProvider", "facebook");
+  // };
+  // const authenticateViaLinkedin = () => {
+  //   window.open(ENDPOINTS.LINKEDIN_AUTH_URL, "_self");
+  //   localStorage.setItem("authProvider", "linkedin");
+  // };
 
-  useEffect(() => {
-    (async function () {
-      const authProviderType = localStorage.getItem("authProvider");
-      if (authProviderType === "google") {
-        try {
-          const response = await getUserToken({ withCredentials: true });
-          localStorage.removeItem("authProvider");
-          console.log("Google Auth Response", response);
-          storeUser(response.data);
-          setError("");
-          navigate("/");
-        } catch (error) {
-          console.log("Google Auth Error", error);
-          console.log(error);
-        }
-      } else if (authProviderType === "facebook") {
-        try {
-          const response = await getUserToken({ withCredentials: true });
-          localStorage.removeItem("authProvider");
-          console.log("Facebook Auth Response", response);
-          storeUser(response.data);
-          setError("");
-          navigate("/");
-        } catch (error) {
-          console.log("Facebook Auth Error", error);
-          console.log(error);
-        }
-      } else if (authProviderType === "linkedin") {
-        try {
-          const response = await getUserToken({ withCredentials: true });
-          localStorage.removeItem("authProvider");
-          console.log("Linkedin Auth Response", response);
-          if (response) {
-            storeUser(response.data);
-            setError("");
-            navigate("/");
-          }
-        } catch (error) {
-          console.log("Linkedin Auth Error", error);
-          console.log(error);
-        }
-      }
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async function () {
+  //     const authProviderType = localStorage.getItem("authProvider");
+  //     if (authProviderType === "google") {
+  //       try {
+  //         const response = await getUserToken({ withCredentials: true });
+  //         localStorage.removeItem("authProvider");
+  //         console.log("Google Auth Response", response);
+  //         storeUser(response.data);
+  //         setError("");
+  //         navigate("/");
+  //       } catch (error) {
+  //         console.log("Google Auth Error", error);
+  //         console.log(error);
+  //       }
+  //     } else if (authProviderType === "facebook") {
+  //       try {
+  //         const response = await getUserToken({ withCredentials: true });
+  //         localStorage.removeItem("authProvider");
+  //         console.log("Facebook Auth Response", response);
+  //         storeUser(response.data);
+  //         setError("");
+  //         navigate("/");
+  //       } catch (error) {
+  //         console.log("Facebook Auth Error", error);
+  //         console.log(error);
+  //       }
+  //     } else if (authProviderType === "linkedin") {
+  //       try {
+  //         const response = await getUserToken({ withCredentials: true });
+  //         localStorage.removeItem("authProvider");
+  //         console.log("Linkedin Auth Response", response);
+  //         if (response) {
+  //           storeUser(response.data);
+  //           setError("");
+  //           navigate("/");
+  //         }
+  //       } catch (error) {
+  //         console.log("Linkedin Auth Error", error);
+  //         console.log(error);
+  //       }
+  //     }
+  //   })();
+  // }, []);
 
   return (
     <LoginBox
@@ -283,15 +283,19 @@ const Login = () => {
             Register
           </Link>
         </LoginRoutetext>
+        //{" "}
         <LoginHrBox>
-          <LoginHr />
-          <LoginHrText>or sign with</LoginHrText>
-          <LoginHr />
+          // <LoginHr />
+          // <LoginHrText>or sign with</LoginHrText>
+          // <LoginHr />
+          //{" "}
         </LoginHrBox>
+        //{" "}
         <LoginIconsBox>
-          <LoginFacebookIcon onClick={authenticateViaFacebook} />
-          <LoginGoogleIcon onClick={authenticateViaGoogle} />
-          <LoginTwitterIcon onClick={authenticateViaLinkedin} />
+          // <LoginFacebookIcon onClick={authenticateViaFacebook} />
+          // <LoginGoogleIcon onClick={authenticateViaGoogle} />
+          // <LoginTwitterIcon onClick={authenticateViaLinkedin} />
+          //{" "}
         </LoginIconsBox>
       </LoginFormBox>
     </LoginBox>

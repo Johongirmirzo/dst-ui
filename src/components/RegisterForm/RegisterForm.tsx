@@ -269,7 +269,7 @@ const Register = () => {
             Sign In
           </Link>
         </RegisterRoutetext>
-        <RegisterHrBox>
+        {/* <RegisterHrBox>
           <RegisterHr />
           <RegisterHrText>or sign up with</RegisterHrText>
           <RegisterHr />
@@ -278,7 +278,7 @@ const Register = () => {
           <RegisterFacebookIcon onClick={authenticateViaFacebook} />
           <RegisterGoogleIcon onClick={authenticateViaGoogle} />
           <RegisterTwitterIcon onClick={authenticateViaLinkedin} />
-        </RegisterIconsBox>
+        </RegisterIconsBox> */}
       </RegisterFormBox>
     </RegisterBox>
   );
