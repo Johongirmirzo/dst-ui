@@ -283,8 +283,7 @@ const Login = () => {
             Register
           </Link>
         </LoginRoutetext>
-        //{" "}
-        <LoginHrBox>
+        {/* <LoginHrBox>
           // <LoginHr />
           // <LoginHrText>or sign with</LoginHrText>
           // <LoginHr />
@@ -296,7 +295,7 @@ const Login = () => {
           // <LoginGoogleIcon onClick={authenticateViaGoogle} />
           // <LoginTwitterIcon onClick={authenticateViaLinkedin} />
           //{" "}
-        </LoginIconsBox>
+        </LoginIconsBox> */}
       </LoginFormBox>
     </LoginBox>
   );
