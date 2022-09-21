@@ -25,7 +25,7 @@ const RegisterBox = styled.div`
   justify-content: center;
 `;
 const RegisterFormBox = styled.section`
-  max-width: 500px;
+  max-width: 400px;
   width: 90%;
   margin: 20px 0;
   background: #f7f7f7;
