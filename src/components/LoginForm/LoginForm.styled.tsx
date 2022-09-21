@@ -25,8 +25,8 @@ const LoginBox = styled.div`
   justify-content: center;
 `;
 const LoginFormBox = styled.section`
-  min-width: 350px;
-  max-width: 450px;
+  min-width: 450px;
+  max-width: 500px;
   background: #f7f7f7;
   border-radius: 5px;
   padding: 25px;
