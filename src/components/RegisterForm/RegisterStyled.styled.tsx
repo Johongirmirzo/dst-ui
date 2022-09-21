@@ -27,6 +27,7 @@ const RegisterBox = styled.div`
 const RegisterFormBox = styled.section`
   max-width: 500px;
   width: 90%;
+  margin: 20px 0;
   background: #f7f7f7;
   border-radius: 5px;
   padding: 25px 25px;

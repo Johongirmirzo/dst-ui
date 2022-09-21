@@ -30,6 +30,7 @@ const LoginFormBox = styled.section`
   background: #f7f7f7;
   border-radius: 5px;
   padding: 25px;
+  margin: 20px 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 const LoginTextBox = styled.div`
