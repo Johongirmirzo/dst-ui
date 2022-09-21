@@ -121,17 +121,8 @@ const Login = () => {
                 : { color: theme.darkMode.color }
             }
           >
-            Daily Sleep Tracker
+            Login to Your Account
           </LoginTitle>
-          <LoginDescription
-            style={
-              isLightMode
-                ? { color: theme.lightMode.gray }
-                : { color: theme.darkMode.gray }
-            }
-          >
-            Please sign-in to your account and start the adventure
-          </LoginDescription>
         </LoginTextBox>
         <Formik
           initialValues={{
