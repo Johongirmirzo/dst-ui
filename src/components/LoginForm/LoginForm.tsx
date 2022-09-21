@@ -44,10 +44,10 @@ const Login = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
-  // const authenticateViaGoogle = () => {
-  //   window.open(ENDPOINTS.GOOGLE_AUTH_URL, "_self");
-  //   localStorage.setItem("authProvider", "google");
-  // };
+  const authenticateViaGoogle = () => {
+    window.open(ENDPOINTS.GOOGLE_AUTH_URL, "_self");
+    localStorage.setItem("authProvider", "google");
+  };
   // const authenticateViaFacebook = () => {
   //   window.open(ENDPOINTS.FACEBOOK_AUTH_URL, "_self");
   //   localStorage.setItem("authProvider", "facebook");
@@ -283,16 +283,16 @@ const Login = () => {
             Register
           </Link>
         </LoginRoutetext>
-        {/* <LoginHrBox>
+        <LoginHrBox>
           <LoginHr />
           <LoginHrText>or sign with</LoginHrText>
           <LoginHr />{" "}
         </LoginHrBox>{" "}
         <LoginIconsBox>
-          <LoginFacebookIcon onClick={authenticateViaFacebook} />
+          {/* <LoginFacebookIcon onClick={authenticateViaFacebook} /> */}
           <LoginGoogleIcon onClick={authenticateViaGoogle} />
-          <LoginTwitterIcon onClick={authenticateViaLinkedin} />{" "}
-        </LoginIconsBox> */}
+          {/* <LoginTwitterIcon onClick={authenticateViaLinkedin} />{" "} */}
+        </LoginIconsBox>
       </LoginFormBox>
     </LoginBox>
   );
