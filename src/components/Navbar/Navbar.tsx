@@ -26,6 +26,7 @@ const Navbar = () => {
       display="flex"
       justifyContent="space-between"
       alignItems="center"
+      flexDirection={{ base: "column", sm: "row" }}
     >
       <Heading fontSize={{ base: "20", sm: "25", md: "30" }}>
         <Link to="/">Daily Sleep Tracker</Link>
